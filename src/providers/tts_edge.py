@@ -24,7 +24,7 @@ class EdgeTTSProvider(IVoiceGenerator):
         self.default_voice = default_voice
 
     async def generate_voice(self, script: str, output_path: str, language: str = "English") -> str:
-        voice = LANGUAGE_VOICES.get(language, self.default_voice)
+        voice = LANGUAGE_VOICES.get(language.capitalize(), self.default_voice)
         logger.info(f"Generating voice using Edge TTS ({voice}) for language {language}...")
         communicate = edge_tts.Communicate(script, voice)
         

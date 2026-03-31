@@ -8,3 +8,4 @@ google-auth-httplib2
 google-auth-oauthlib
 pillow
 numpy
+python-telegram-bot>=20.0

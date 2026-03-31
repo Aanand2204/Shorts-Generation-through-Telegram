@@ -38,12 +38,11 @@ async def main():
     
     args = parser.parse_args()
     
-    # If no CLI args are provided, launch the UI Web App
+    # If no CLI args are provided, launch the Telegram Bot
     if not args.image or not args.context:
-        logger.info("No CLI arguments provided. Launching Native AI YouTube Shorts Web UI (FastAPI)...")
-        import uvicorn
-        from src.server import app
-        uvicorn.run(app, host="127.0.0.1", port=8000)
+        logger.info("No CLI arguments provided. Launching Telegram Bot...")
+        from src.bot import start_bot
+        start_bot()
         return
     
     # Otherwise run the CLI pipeline
@@ -66,10 +65,9 @@ async def main():
 if __name__ == "__main__":
     import sys
     if len(sys.argv) == 1:
-        # Launch UI directly synchronously
-        logger.info("No CLI arguments provided. Launching Native AI YouTube Shorts Web UI (FastAPI)...")
-        import uvicorn
-        from src.server import app
-        uvicorn.run(app, host="127.0.0.1", port=8000)
+        # Launch Telegram Bot directly synchronously
+        logger.info("No CLI arguments provided. Launching Telegram Bot...")
+        from src.bot import start_bot
+        start_bot()
     else:
         asyncio.run(main())
